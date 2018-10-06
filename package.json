@@ -4,7 +4,7 @@
   "description": "Code test",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src --out-dir dist --presets=@babel/preset-react",
+    "build": "webpack",
     "serve": "serve -s -l 8000",
     "test": "test"
   },
