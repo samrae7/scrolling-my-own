@@ -1,4 +1,4 @@
-# React starter (ES6)
+# Infinite scrolling in React
 
 ## Getting started
 
