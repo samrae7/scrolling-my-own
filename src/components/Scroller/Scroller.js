@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import "./Scroller.css"
+import "./Scroller.css";
 
 class Scroller extends Component {
   constructor(props) {
@@ -9,36 +9,37 @@ class Scroller extends Component {
       outfits: [],
       outfitsPageCount: 1
     };
-    this.scrollContainerRef = React.createRef(); 
+    this.scrollContainerRef = React.createRef();
     this.fetchOutfits = this.fetchOutfits.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
 
-  get paginatedUrl () {
-    return `https://www.thread.com/api/winter-outfits/98/${this.state.outfitsPageCount}`
-  } 
+  get paginatedUrl() {
+    return `https://www.thread.com/api/winter-outfits/98/${
+      this.state.outfitsPageCount
+    }`;
+  }
 
   componentDidMount() {
-    console.log('window', window);
     this.fetchOutfits();
   }
 
   fetchOutfits() {
     fetch(this.paginatedUrl)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({ outfits: [...this.state.outfits, ...data.outfits] });
-    });
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ outfits: [...this.state.outfits, ...data.outfits] });
+      });
   }
 
-  isScrolledToBottom({scrollTop, clientHeight, scrollHeight}) {
+  isScrolledToBottom({ scrollTop, clientHeight, scrollHeight }) {
     return scrollTop + clientHeight >= scrollHeight;
   }
 
   handleScroll() {
     if (this.isScrolledToBottom(this.scrollContainerRef.current)) {
       this.setState({
-        outfitsPageCount: this.state.outfitsPageCount += 1
+        outfitsPageCount: (this.state.outfitsPageCount += 1)
       });
       this.fetchOutfits();
     }
@@ -54,10 +55,7 @@ class Scroller extends Component {
               return (
                 <div key={index}>
                   <h5>{item.name}</h5>
-                  <img
-                    src={item.image_url}
-                    alt={item.name}
-                  />
+                  <img src={item.image_url} alt={item.name} />
                 </div>
               );
             })}
@@ -72,7 +70,11 @@ class Scroller extends Component {
     });
 
     return (
-      <div ref={this.scrollContainerRef} className="scroll-container" onScroll={this.handleScroll}>
+      <div
+        ref={this.scrollContainerRef}
+        className="scroll-container"
+        onScroll={this.handleScroll}
+      >
         <header>
           <h1>Your latest outfits</h1>
           <h2>Styled by Shaunie</h2>
