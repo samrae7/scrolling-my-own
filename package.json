@@ -4,6 +4,7 @@
   "description": "Code test",
   "main": "index.js",
   "scripts": {
+    "build:watch": "webpack --watch",
     "build": "webpack",
     "serve": "serve -s -l 8000",
     "test": "test"
