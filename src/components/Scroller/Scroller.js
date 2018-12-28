@@ -79,7 +79,6 @@ class Scroller extends Component {
           <h1>Your latest outfits</h1>
           <h2>Styled by Shaunie</h2>
         </header>
-
         {outfitsToRender}
       </div>
     );
