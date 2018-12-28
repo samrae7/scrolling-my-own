@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Scroller from "./components/Scroller/Scroller";
+
 class App extends React.Component {
   render() {
     return (
-      <div>
-        Hello world!
-      </div>
+      <Scroller />
     );
   }
 }
